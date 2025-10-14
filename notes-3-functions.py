@@ -1,5 +1,5 @@
 # Functions
-# Author: Ubial
+# Author: Henry
 # 8 October
 
 # function to print "hello"
