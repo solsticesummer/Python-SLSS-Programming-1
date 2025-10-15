@@ -54,6 +54,7 @@ mikey = turtle.Turtle()
 # mikey.hideturtle()
 
 for counter in range(10):
+    counter = counter + 50
     mikey.setheading(0)
     mikey.color("brown")
     mikey.turtlesize(1)
@@ -77,4 +78,4 @@ for counter in range(10):
     mikey.stamp()
     mikey.hideturtle()
 
-    wn.exitonclick()
+wn.exitonclick()
