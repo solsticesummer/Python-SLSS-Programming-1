@@ -17,6 +17,7 @@ t.shape("turtle")
 t.penup()
 t.goto(0, -100)
 t.pendown()
+t.speed("fastest")
 
 
 def draw_tree(level: int, branch_length: float):
@@ -38,7 +39,8 @@ def draw_tree(level: int, branch_length: float):
         t.backward(branch_length)
 
 
-draw_tree(6, 120)
+draw_tree(5, 120)
+t.hideturtle()
 
 wn.exitonclick()
 
@@ -77,5 +79,6 @@ wn.exitonclick()
 
 
 # draw_complicatedtree(5, 120)
+# t.hideturtle()
 
 # wn.exitonclick()
