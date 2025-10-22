@@ -3,46 +3,46 @@
 # Date: 20 Oct 2025
 
 # We're drawing trees (recursivey)
-import turtle
+# import turtle
 
-wn = turtle.Screen()
-wn.bgcolor("lightgreen")
+# wn = turtle.Screen()
+# wn.bgcolor("lightgreen")
 
-t = turtle.Turtle()
+# t = turtle.Turtle()
 
-t.left(90)
-t.color("brown")
-t.pensize(5)
-t.shape("turtle")
-t.penup()
-t.goto(0, -100)
-t.pendown()
-t.speed("fastest")
-
-
-def draw_tree(level: int, branch_length: float):
-    # Base case: if level is 0, draw a single branch
-    if level == 0:
-        t.color("blue")
-        t.stamp()
-        t.color("brown")
-        return
-
-    # Recursive case: draw a branch and two smaller trees
-    else:
-        t.forward(branch_length)
-        t.right(30)
-        draw_tree(level - 1, branch_length * 0.8)
-        t.left(60)
-        draw_tree(level - 1, branch_length * 0.8)
-        t.right(30)
-        t.backward(branch_length)
+# t.left(90)
+# t.color("brown")
+# t.pensize(5)
+# t.shape("turtle")
+# t.penup()
+# t.goto(0, -100)
+# t.pendown()
+# t.speed("fastest")
 
 
-draw_tree(5, 120)
-t.hideturtle()
+# def draw_tree(level: int, branch_length: float):
+#     # Base case: if level is 0, draw a single branch
+#     if level == 0:
+#         t.color("blue")
+#         t.stamp()
+#         t.color("brown")
+#         return
 
-wn.exitonclick()
+#     # Recursive case: draw a branch and two smaller trees
+#     else:
+#         t.forward(branch_length)
+#         t.right(30)
+#         draw_tree(level - 1, branch_length * 0.8)
+#         t.left(60)
+#         draw_tree(level - 1, branch_length * 0.8)
+#         t.right(30)
+#         t.backward(branch_length)
+
+
+# draw_tree(5, 120)
+# t.hideturtle()
+
+# wn.exitonclick()
 
 
 import turtle
