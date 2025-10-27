@@ -50,6 +50,13 @@ import turtle
 wn = turtle.Screen()
 wn.bgcolor("skyblue")
 
+LEAF_COLOURS = {
+    "spring": "#FCB3FS",
+    "summer": "#12C517",
+    "fall": "#FFB533",
+    "winter": "#BFF5F5",
+}
+
 t = turtle.Turtle()
 t.shape("turtle")
 t.goto(0, -100)
@@ -61,7 +68,7 @@ t.pensize(5)
 def draw_complicatedtree(level: int, branch_length: float):
     # Base case: if level is 0, draw a single branch
     if level == 0:
-        t.color("green")
+        t.color(LEAF_COLOURS["spring"])
         t.stamp()
         t.color("brown")
         return
@@ -85,6 +92,7 @@ def factorial(num: int) -> int:
         return 1
 
 
+print(draw_complicatedtree(5, 120))
 print(factorial(3))
 print(factorial(4))
 print(factorial(5))
