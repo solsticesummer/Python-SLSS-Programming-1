@@ -51,7 +51,7 @@ wn = turtle.Screen()
 wn.bgcolor("skyblue")
 
 LEAF_COLOURS = {
-    "spring": "#FCB3FS",
+    "spring": "#FCB3F5",
     "summer": "#12C517",
     "fall": "#FFB533",
     "winter": "#BFF5F5",
@@ -92,7 +92,7 @@ def factorial(num: int) -> int:
         return 1
 
 
-draw_complicatedtree(5, 120)
+draw_complicatedtree(4, 120)
 t.hideturtle()
 
 wn.exitonclick()
