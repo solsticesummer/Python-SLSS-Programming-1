@@ -92,7 +92,11 @@ def factorial(num: int) -> int:
         return 1
 
 
-print(draw_complicatedtree(5, 120))
+draw_complicatedtree(5, 120)
+t.hideturtle()
+
+wn.exitonclick()
+
 print(factorial(3))
 print(factorial(4))
 print(factorial(5))
@@ -101,8 +105,3 @@ print(factorial(7))
 print(factorial(8))
 print(factorial(9))
 print(factorial(10))
-
-# draw_complicatedtree(5, 120)
-# t.hideturtle()
-
-# wn.exitonclick()
