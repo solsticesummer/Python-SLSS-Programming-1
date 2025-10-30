@@ -130,11 +130,14 @@ def draw_bottomright_window(length: float):
             t.right(90)
             t.forward(length / 2)
 
+        # start drawing
         t.hideturtle()
         t.pendown()
+        # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.left(90)
+        # draw the cross in the new window
         leftL()
         t.right(90)
         rightL()
@@ -167,11 +170,14 @@ def draw_topright_window(length: float):
             t.right(90)
             t.forward(length / 2)
 
+        # start drawing
         t.hideturtle()
         t.pendown()
+        # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.right(90)
+        # draw the cross in the new window
         rightL()
         t.left(90)
         leftL()
