@@ -221,6 +221,7 @@ def draw_topright_window(length: float):
     if length < 5:
         # stop drawing
         t.penup()
+        t.goto(0, 400)
         t.showturtle()
         return
 
