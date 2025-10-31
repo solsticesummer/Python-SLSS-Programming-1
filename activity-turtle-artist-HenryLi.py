@@ -3,13 +3,28 @@
 # Date: 2025-10-28
 
 import turtle
+import random
 
 # A one of a kind drawing
+
 # Set up window
 wn = turtle.Screen()
 # Set up turtle
 t = turtle.Turtle()
 
+# Dictionary of colors for windows
+window_colors = {
+    1: "#FF0000",
+    2: "#6A0D83",
+    3: "#9400D3",
+    4: "#0000FF",
+    5: "#00FF00",
+    6: "#FF00FF",
+    7: "#FF7F50",
+    8: "#FF00FF",
+    9: "#EEAF61",
+    10: "#065535",
+}
 
 # Set background color
 wn.bgcolor("skyblue")
@@ -41,6 +56,7 @@ def draw_topleft_window(length: float):
         # go back to origin in the right direction
         t.goto(0, 0)
         t.right(180)
+        return
 
     else:
         # rightL function to draw a right L shape
@@ -62,10 +78,14 @@ def draw_topleft_window(length: float):
         # start drawing
         t.hideturtle()
         t.pendown()
+
+        t.begin_fill()
+        t.color(window_colors[random.randint(1, 10)])
         # draw the outline for the new window
         for _ in range(4):
             t.forward(length)
             t.left(90)
+        t.end_fill()
         # draw the cross in the new window
         leftL()
         t.right(90)
@@ -84,6 +104,7 @@ def draw_bottomleft_window(length: float):
         t.showturtle()
         # Go back to origin
         t.goto(0, 0)
+        return
 
     else:
         # rightL function to draw a right L shape
@@ -105,10 +126,13 @@ def draw_bottomleft_window(length: float):
         # start drawing
         t.hideturtle()
         t.pendown()
+        t.begin_fill()
+        t.color(window_colors[random.randint(1, 10)])
         # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.right(90)
+        t.end_fill()
         # draw the cross in the new window
         rightL()
         t.left(90)
@@ -128,6 +152,7 @@ def draw_bottomright_window(length: float):
         # Go back to origin
         t.goto(0, 0)
         t.left(180)
+        return
 
     else:
         # rightL function to draw a right L shape
@@ -148,10 +173,13 @@ def draw_bottomright_window(length: float):
         # start drawing
         t.hideturtle()
         t.pendown()
+        t.begin_fill()
+        t.color(window_colors[random.randint(1, 10)])
         # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.left(90)
+        t.end_fill()
         # draw the cross in the new window
         leftL()
         t.right(90)
@@ -168,6 +196,7 @@ def draw_topright_window(length: float):
         # stop drawing
         t.penup()
         t.showturtle()
+        return
 
     else:
         # rightL function to draw a right L shape
@@ -189,10 +218,13 @@ def draw_topright_window(length: float):
         # start drawing
         t.hideturtle()
         t.pendown()
+        t.begin_fill()
+        t.color(window_colors[random.randint(1, 10)])
         # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.right(90)
+        t.end_fill()
         # draw the cross in the new window
         rightL()
         t.left(90)
