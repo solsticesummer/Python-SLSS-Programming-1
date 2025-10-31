@@ -5,19 +5,28 @@
 import turtle
 
 # A one of a kind drawing
+# Set up window
 wn = turtle.Screen()
+# Set up turtle
 t = turtle.Turtle()
 
 
-# Set background and turtle
+# Set background color
 wn.bgcolor("skyblue")
+# Set color
 t.color("white")
+# Set shape
 t.shape("turtle")
+# Set drawing speed
 t.speed("fastest")
+# Set turtle size
 t.turtlesize(0.5)
+# Set the drawing's color
 t.pencolor("black")
+# Set the drawing's size
 t.pensize(3)
 t.penup()
+# go back to origin in the right direction
 t.goto(0, 0)
 t.left(90)
 
@@ -26,8 +35,10 @@ t.left(90)
 def draw_topleft_window(length: float):
     # The recursion stops when length is less than 5
     if length < 5:
+        # stop drawing
         t.penup()
         t.showturtle()
+        # go back to origin in the right direction
         t.goto(0, 0)
         t.right(180)
 
@@ -68,8 +79,10 @@ def draw_topleft_window(length: float):
 def draw_bottomleft_window(length: float):
     # The recursion stops when length is less than 5
     if length < 5:
+        # Stop drawing
         t.penup()
         t.showturtle()
+        # Go back to origin
         t.goto(0, 0)
 
     else:
@@ -109,8 +122,10 @@ def draw_bottomleft_window(length: float):
 def draw_bottomright_window(length: float):
     # The recursion stops when length is less than 5
     if length < 5:
+        # Stop drawing
         t.penup()
         t.showturtle()
+        # Go back to origin
         t.goto(0, 0)
         t.left(180)
 
@@ -142,7 +157,7 @@ def draw_bottomright_window(length: float):
         t.right(90)
         rightL()
         t.left(90)
-        # Recursion to draw the next smaller window
+        # Recursion to draw the window again with half the length
         draw_bottomright_window(length // 2)
 
 
@@ -150,6 +165,7 @@ def draw_bottomright_window(length: float):
 def draw_topright_window(length: float):
     # The recursion stops when length is less than 5
     if length < 5:
+        # stop drawing
         t.penup()
         t.showturtle()
 
