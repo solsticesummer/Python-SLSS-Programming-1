@@ -41,7 +41,7 @@ t.turtlesize(0.5)
 # Set the drawing's color
 t.pencolor("black")
 # Set the drawing's size
-t.pensize(3)
+t.pensize(1)
 t.penup()
 # go back to origin in the right direction
 t.goto(0, 0)
@@ -80,14 +80,21 @@ def draw_topleft_window(length: float):
         # start drawing
         t.hideturtle()
         t.pendown()
-
+        # start fill
         t.begin_fill()
-        t.color(window_colors[random.randint(1, 12)])
+        # pick random color
+        t.color("black", window_colors[random.randint(1, 12)])
         # draw the outline for the new window
         for _ in range(4):
             t.forward(length)
             t.left(90)
+        # end fill
         t.end_fill()
+        # Redraw the outline
+        t.pendown()
+        for _ in range(4):
+            t.forward(length)
+            t.left(90)
         # draw the cross in the new window
         leftL()
         t.right(90)
@@ -131,13 +138,18 @@ def draw_bottomleft_window(length: float):
         # Start filling
         t.begin_fill()
         # Pick a random color
-        t.color(window_colors[random.randint(1, 12)])
+        t.color("black", window_colors[random.randint(1, 12)])
         # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.right(90)
         # End fill
         t.end_fill()
+        # Redraw the outline
+        t.pendown()
+        for _ in range(4):
+            t.forward(length)
+            t.right(90)
         # draw the cross in the new window
         rightL()
         t.left(90)
@@ -182,13 +194,18 @@ def draw_bottomright_window(length: float):
         # Start Fill
         t.begin_fill()
         # Pick random window color
-        t.color(window_colors[random.randint(1, 12)])
+        t.color("black", window_colors[random.randint(1, 12)])
         # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.left(90)
         # End fill
         t.end_fill()
+        # Redraw the outline
+        t.pendown()
+        for _ in range(4):
+            t.forward(length)
+            t.left(90)
         # draw the cross in the new window
         leftL()
         t.right(90)
@@ -230,13 +247,18 @@ def draw_topright_window(length: float):
         # Start fill
         t.begin_fill()
         # Pick random window color
-        t.color(window_colors[random.randint(1, 12)])
+        t.color("black", window_colors[random.randint(1, 12)])
         # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.right(90)
         # End fill
         t.end_fill()
+        # Redraw the outline
+        t.pendown()
+        for _ in range(4):
+            t.forward(length)
+            t.right(90)
         # draw the cross in the new window
         rightL()
         t.left(90)
