@@ -168,6 +168,7 @@ def draw_bottomright_window(length: float):
             t.left(90)
             t.forward(length / 2)
 
+        # leftL function to draw a left L shape
         def leftL():
             t.forward(length / 2)
             t.left(90)
