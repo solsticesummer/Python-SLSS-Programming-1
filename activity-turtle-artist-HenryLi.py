@@ -12,7 +12,7 @@ wn = turtle.Screen()
 # Set up turtle
 t = turtle.Turtle()
 
-# Dictionary of colors for windows
+# Dictionary of colors for different sized windows
 window_colors = {
     1: "#FF0000",
     2: "#6A0D83",
@@ -24,6 +24,8 @@ window_colors = {
     8: "#FF00FF",
     9: "#EEAF61",
     10: "#065535",
+    11: "#B0BF1A",
+    12: "#0070FF",
 }
 
 # Set background color
@@ -80,7 +82,7 @@ def draw_topleft_window(length: float):
         t.pendown()
 
         t.begin_fill()
-        t.color(window_colors[random.randint(1, 10)])
+        t.color(window_colors[random.randint(1, 12)])
         # draw the outline for the new window
         for _ in range(4):
             t.forward(length)
@@ -126,12 +128,15 @@ def draw_bottomleft_window(length: float):
         # start drawing
         t.hideturtle()
         t.pendown()
+        # Start filling
         t.begin_fill()
-        t.color(window_colors[random.randint(1, 10)])
+        # Pick a random color
+        t.color(window_colors[random.randint(1, 12)])
         # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.right(90)
+        # End fill
         t.end_fill()
         # draw the cross in the new window
         rightL()
@@ -173,12 +178,15 @@ def draw_bottomright_window(length: float):
         # start drawing
         t.hideturtle()
         t.pendown()
+        # Start Fill
         t.begin_fill()
-        t.color(window_colors[random.randint(1, 10)])
+        # Pick random window color
+        t.color(window_colors[random.randint(1, 12)])
         # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.left(90)
+        # End fill
         t.end_fill()
         # draw the cross in the new window
         leftL()
@@ -218,12 +226,15 @@ def draw_topright_window(length: float):
         # start drawing
         t.hideturtle()
         t.pendown()
+        # Start fill
         t.begin_fill()
-        t.color(window_colors[random.randint(1, 10)])
+        # Pick random window color
+        t.color(window_colors[random.randint(1, 12)])
         # draw the outline of the new window
         for _ in range(4):
             t.forward(length)
             t.right(90)
+        # End fill
         t.end_fill()
         # draw the cross in the new window
         rightL()
