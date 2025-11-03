@@ -2,15 +2,34 @@
 # Author: Henry Li
 # Date: 2025-10-28
 
+# Drawing a recursive function of a window
+
 import turtle
 import random
-
-# A one of a kind drawing
 
 # Set up window
 wn = turtle.Screen()
 # Set up turtle
 t = turtle.Turtle()
+# Set background color
+wn.bgcolor("skyblue")
+# Set color
+t.color("white")
+# Set shape
+t.shape("turtle")
+# Set drawing speed
+t.speed("fastest")
+# Set turtle size
+t.turtlesize(0.5)
+# Set the drawing's color
+t.pencolor("black")
+# Set the drawing's size
+t.pensize(1)
+# stop drawing
+t.penup()
+# go to origin in the right direction to prepare start drawing
+t.goto(0, 0)
+t.left(90)
 
 # Dictionary of colors for different sized windows
 window_colors = {
@@ -28,25 +47,6 @@ window_colors = {
     12: "#0070FF",
 }
 
-# Set background color
-wn.bgcolor("skyblue")
-# Set color
-t.color("white")
-# Set shape
-t.shape("turtle")
-# Set drawing speed
-t.speed("fastest")
-# Set turtle size
-t.turtlesize(0.5)
-# Set the drawing's color
-t.pencolor("black")
-# Set the drawing's size
-t.pensize(1)
-t.penup()
-# go back to origin in the right direction
-t.goto(0, 0)
-t.left(90)
-
 
 # Draw the top left window
 def draw_topleft_window(length: float):
@@ -54,14 +54,13 @@ def draw_topleft_window(length: float):
     if length < 5:
         # stop drawing
         t.penup()
-        t.showturtle()
         # go back to origin in the right direction
         t.goto(0, 0)
         t.right(180)
         return
 
     else:
-        # rightL function to draw a right L shape
+        # rightL function to draw the horizontal cross
         def rightL():
             t.forward(length / 2)
             t.right(90)
@@ -69,7 +68,7 @@ def draw_topleft_window(length: float):
             t.left(90)
             t.forward(length / 2)
 
-        # leftL function to draw a left L shape
+        # leftL function to draw the vertical cross
         def leftL():
             t.forward(length / 2)
             t.left(90)
@@ -78,8 +77,9 @@ def draw_topleft_window(length: float):
             t.forward(length / 2)
 
         # start drawing
-        t.hideturtle()
         t.pendown()
+        # hide the turtle
+        t.hideturtle()
         # start fill
         t.begin_fill()
         # pick random color
@@ -110,13 +110,12 @@ def draw_bottomleft_window(length: float):
     if length < 5:
         # Stop drawing
         t.penup()
-        t.showturtle()
         # Go back to origin
         t.goto(0, 0)
         return
 
     else:
-        # rightL function to draw a right L shape
+        # rightL function to draw the horizontal cross
         def rightL():
             t.forward(length / 2)
             t.right(90)
@@ -124,7 +123,7 @@ def draw_bottomleft_window(length: float):
             t.left(90)
             t.forward(length / 2)
 
-        # leftL function to draw a left L shape
+        # leftL function to draw the vertical cross
         def leftL():
             t.forward(length / 2)
             t.left(90)
@@ -133,7 +132,6 @@ def draw_bottomleft_window(length: float):
             t.forward(length / 2)
 
         # start drawing
-        t.hideturtle()
         t.pendown()
         # Start filling
         t.begin_fill()
@@ -165,14 +163,13 @@ def draw_bottomright_window(length: float):
     if length < 5:
         # Stop drawing
         t.penup()
-        t.showturtle()
         # Go back to origin
         t.goto(0, 0)
         t.left(180)
         return
 
     else:
-        # rightL function to draw a right L shape
+        # rightL function to draw the horizontal cross
         def rightL():
             t.forward(length / 2)
             t.right(90)
@@ -180,7 +177,7 @@ def draw_bottomright_window(length: float):
             t.left(90)
             t.forward(length / 2)
 
-        # leftL function to draw a left L shape
+        # leftL function to draw the vertical cross
         def leftL():
             t.forward(length / 2)
             t.left(90)
@@ -189,7 +186,6 @@ def draw_bottomright_window(length: float):
             t.forward(length / 2)
 
         # start drawing
-        t.hideturtle()
         t.pendown()
         # Start Fill
         t.begin_fill()
@@ -221,12 +217,16 @@ def draw_topright_window(length: float):
     if length < 5:
         # stop drawing
         t.penup()
+        # move the turtle to the top of the window
         t.goto(0, 400)
+        # show turtle outside of the window
         t.showturtle()
+        # make the turtle bigger
+        t.turtlesize(3)
         return
 
     else:
-        # rightL function to draw a right L shape
+        # rightL function to draw the horizontal cross
         def rightL():
             t.forward(length / 2)
             t.right(90)
@@ -234,7 +234,7 @@ def draw_topright_window(length: float):
             t.left(90)
             t.forward(length / 2)
 
-        # leftL function to draw a left L shape
+        # leftL function to draw the vertical cross
         def leftL():
             t.forward(length / 2)
             t.left(90)
@@ -243,7 +243,6 @@ def draw_topright_window(length: float):
             t.forward(length / 2)
 
         # start drawing
-        t.hideturtle()
         t.pendown()
         # Start fill
         t.begin_fill()
