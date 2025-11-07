@@ -8,6 +8,8 @@
 
 import os
 
+NUM_VOTERS = 5
+
 
 # Version 1
 def vote_list_choices():
@@ -31,7 +33,7 @@ def vote_list_choices():
     fresh_t = 0
     spoiled_votes = 0
 
-    for _ in range(5):
+    for _ in range(NUM_VOTERS):
         # Clear screen
         os.system("clear")
 
