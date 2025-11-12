@@ -93,8 +93,39 @@ def vote_list_choices():
 # Give scores as a percentage
 
 
+def chip_rater():
+    # Help gather data about chip cripness and quality.
+    questions = [
+        "How crispy is the chip out of 5? 0 is mushy and 5 is super crisp.",
+        "How would you rate the taste out of 5? 0 is unpalateble and 5 is gourmet.",
+        "How fresh would you rate the chip out of 5? 0 is stale and 5 is pristine.",
+    ]
+
+    # Bucket to hold the total ratings
+    total_ratings = 0
+
+    # Give the test subject instructions
+    print("Take one chip from the bag.")
+    print("Eat it mindfully.")
+    print("Give your rating.")
+
+    # Ask questions to the subject
+    for question in questions:
+        # for each question
+        print(question)
+
+        # get their rating for that question out of 5
+        rating = int(input().strip(" .,!?"))
+
+        total_ratings += rating
+    # print out the average rating out of 5
+    average = total_ratings / len(questions)
+    print(f"The average rating is {average} stars!")
+
+
 def main():
-    vote_list_choices()
+    # vote_list_choices()
+    chip_rater()
 
 
 if __name__ == "__main__":
