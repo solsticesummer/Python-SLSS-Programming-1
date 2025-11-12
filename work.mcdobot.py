@@ -1,6 +1,6 @@
 # Work - McDoBot
 # Author - Henry
-# Ocotober 6
+# October 6
 
 # Write a McDonald's bot that asks if you want fries with your meal.
 # Call it  work-mcdobot.py.

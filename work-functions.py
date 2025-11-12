@@ -1,6 +1,6 @@
 # Work - Functions
 # Author - Henry
-# Ocotober 14
+# October 14
 
 
 def create_mood_message(mood: str = "neutral"):
