@@ -58,6 +58,6 @@ def mcdonalds():
     print(f"Your total is ${final_total}.")
 
 
-# age_in_2049()
-# mcdonalds()
+age_in_2049()
+mcdonalds()
 olympic_judging()
