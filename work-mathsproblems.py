@@ -45,7 +45,7 @@ def mcdonalds():
     else:
         print("Invalid response")
         return
-    print("World you like fries for $3? (Yes/No)")
+    print("Would you like fries for $3? (Yes/No)")
     answer2 = input().lower().strip(" ?!.,")
     if answer2 == "yes":
         total += 3
