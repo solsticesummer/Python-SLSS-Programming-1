@@ -15,6 +15,10 @@ def main():
     header_row = file.readline()
 
     # Get information about the favorite pizza in SFU
+    uncle_fatih = 0
+    club_ilia = 0
+    pizza_hut = 0
+
     # Print the rest of the file
     for line in file:
         # fave pizza is column 4
@@ -24,9 +28,19 @@ def main():
         columns = line.split(",")
         # get the favorite pizza
         favorite_pizza = columns[4]
-        name = columns[1]
-        # print the favorite pizza
-        print(f"{name}'s favorite pizza is {favorite_pizza}")
+
+        # print the name and favorite pizza
+        if favorite_pizza == "Uncle Fatih":
+            uncle_fatih += 1
+        elif favorite_pizza == "Club Ilia":
+            club_ilia += 1
+        elif favorite_pizza == "Pizza Hut":
+            pizza_hut += 1
+
+    # Dispaly results
+    print(f"Uncle Fatih's votes: {uncle_fatih}")
+    print(f"Club Ilia's votes: {club_ilia}")
+    print(f"Pizza Hut's votes : {pizza_hut}")
 
     file.close()
     pass
