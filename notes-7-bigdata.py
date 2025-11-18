@@ -14,9 +14,19 @@ def main():
     # Read the file
     header_row = file.readline()
 
-    # Read the ret of the file
+    # Get information about the favorite pizza in SFU
+    # Print the rest of the file
     for line in file:
-        print(line)
+        # fave pizza is column 4
+        # a line is a string
+        # convert the string to a list
+        # split the line into columns
+        columns = line.split(",")
+        # get the favorite pizza
+        favorite_pizza = columns[4]
+        name = columns[1]
+        # print the favorite pizza
+        print(f"{name}'s favorite pizza is {favorite_pizza}")
 
     file.close()
     pass
