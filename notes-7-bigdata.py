@@ -30,7 +30,7 @@ def main():
         favorite_pizza = columns[4]
 
         # print the name and favorite pizza
-        if favorite_pizza == "Uncle Fatih":
+        if favorite_pizza == "Uncle Fatih's":
             uncle_fatih += 1
         elif favorite_pizza == "Club Ilia":
             club_ilia += 1
@@ -39,8 +39,8 @@ def main():
 
     # Dispaly results
     print(f"Uncle Fatih's votes: {uncle_fatih}")
-    print(f"Club Ilia's votes: {club_ilia}")
-    print(f"Pizza Hut's votes : {pizza_hut}")
+    print(f"Club Ilia votes: {club_ilia}")
+    print(f"Pizza Hut votes : {pizza_hut}")
 
     file.close()
     pass
