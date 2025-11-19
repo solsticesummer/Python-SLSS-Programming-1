@@ -30,5 +30,15 @@ def num():
 
     loop(current_total)
 
+    # def loop(current_total, day, total):
+    #     if total > num_1:
+    #         print(day)
+    #         return
+    #     else:
+    #         # run the code, adding to the total
+    #         loop(current_total * multiple, day + 1, total + current_total)
+
+    # loop(current_total, day, total)
+
 
 num()
