@@ -10,17 +10,25 @@ def num():
     num_1 = int(input())
     num_2 = int(input())
     num_3 = int(input())
+    current_total = num_2
+    multiple = num_3
+    day = 0
     total = num_2
-    day = num_3 + 1
 
-    for _ in range(10):
+    def loop(current_total):
+        nonlocal day
+        nonlocal total
+        day += 1
+        current_total = current_total * multiple
+        total += current_total
         if total > num_1:
-            print(int(day) - 1)
+            print(day)
             return
         else:
             # run the code, adding to the total
+            loop(current_total)
 
-            total = total * day
+    loop(current_total)
 
 
 num()
