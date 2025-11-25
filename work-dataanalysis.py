@@ -17,17 +17,23 @@ def main():
             total += 1
         print(total)
 
-    def avg():
-        total = data_points()
+    def avg_rainfall():
+        total = 0
+        total_rainfall = 0
+
         for line in file:
             columns = line.split(",")
             precpitation = float(columns[1])
             snowfall = float(columns[2])
-            avg_rainfall = precpitation + snowfall) / total
+            rainfall = precpitation + snowfall
+            total_rainfall += rainfall
+            total += 1
+        avg_rainfall = total_rainfall / total
+        print(avg_rainfall)
 
-        print(f"Average Rainfall: {avg_rainfall} inches")
+    # data_points()
+    avg_rainfall()
 
-    data_points()
     file.close()
     pass
 
