@@ -56,6 +56,7 @@ def main():
         #     )
 
         print(f"Number of Justin Songs: {len(justin_songs)}")
+        non_explicit_songs = 0
 
         for song in justin_songs:
             current_trackname = song[track_col]
@@ -66,6 +67,8 @@ def main():
                 print(
                     f"{current_trackname.strip()}\t\t{current_ytviews.strip()}\t\t{current_tiktokviews.strip()}"
                 )
+                non_explicit_songs += 1
+        print(f"Number of non-explicit Songs: {non_explicit_songs}")
 
         # for song in kendrick_songs:
         #     print(song)
