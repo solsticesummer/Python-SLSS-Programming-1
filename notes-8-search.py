@@ -62,8 +62,8 @@ def main():
             current_trackname = song[track_col]
             current_ytviews = song[yt_views_col]
             current_tiktokviews = song[tiktok_views_col]
-            explict_song = song[explicit_track_col]
-            if explict_song == "0":
+            explicit_song = song[explicit_track_col]
+            if explicit_song == "0":
                 print(
                     f"{current_trackname.strip()}\t\t{current_ytviews.strip()}\t\t{current_tiktokviews.strip()}"
                 )
