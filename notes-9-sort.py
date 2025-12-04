@@ -2,7 +2,7 @@
 # Author: Henry
 # 4 December
 
-import csv
+# import csv
 
 # Sorting Algorithms
 # The code below uses linear search to find songs from a particular artist
@@ -11,7 +11,7 @@ import csv
 #     * implement sort with songs based on YouTube views in descending order
 
 
-def selection_sort(l: list[int], ascending=True) -> list[int]:
+def selection_sort(li: list[int], ascending=True) -> list[int]:
     """Sorts a given list using selection sort
 
     Params:
@@ -21,23 +21,36 @@ def selection_sort(l: list[int], ascending=True) -> list[int]:
     Returns:
         a sorted list"""
 
-    num_items = len(l)
+    num_items = len(li)
 
-    # start at the beginning of the list
-    for i in range(num_items):
-        lowest_num = l[i]
-        lowest_index = i
-        # check the rest of the list
-        for j in range(i + 1, num_items):
-            if l[j] < lowest_num:
-                lowest_num = l[j]
-                lowest_index = j
-            else:
-                continue
-        # swap the current index with the lowest
-        l[i], l[lowest_index] = l[lowest_index], l[i]
+    if ascending:
+        # start at the beginning of the list
+        for i in range(num_items):
+            lowest_num = li[i]
+            lowest_index = i
+            # check the rest of the list
+            for j in range(i + 1, num_items):
+                if li[j] < lowest_num:
+                    lowest_num = li[j]
+                    lowest_index = j
 
-    return l
+            # swap the current index with the lowest
+            li[i], li[lowest_index] = li[lowest_index], li[i]
+    else:
+        # start at the beginning of the list
+        for i in range(num_items):
+            highest_num = li[i]
+            highest_index = i
+            # check the rest of the list
+            for j in range(i + 1, num_items):
+                if li[j] > highest_num:
+                    highest_num = li[j]
+                    highest_index = j
+
+            # swap the current index with the highest
+            li[i], li[highest_index] = li[highest_index], li[i]
+
+    return li
 
 
 if __name__ == "__main__":
