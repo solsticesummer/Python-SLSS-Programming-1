@@ -54,6 +54,6 @@ def selection_sort(li: list[int], ascending=True) -> list[int]:
 
 
 if __name__ == "__main__":
-    sorted_list = selection_sort([1, 43, 55, -11, 100, 34])
+    sorted_list = selection_sort([1, 43, 55, -11, 100, 34], ascending=False)
 
     print(sorted_list)
