@@ -2,7 +2,7 @@
 # Author: Henry
 # 4 December
 
-# import csv
+import helper_spotify
 
 # Sorting Algorithms
 # The code below uses linear search to find songs from a particular artist
@@ -53,9 +53,45 @@ def selection_sort(li: list[int], ascending=True) -> list[int]:
     return li
 
 
-if __name__ == "__main__":
-    ascending_list = selection_sort([1, 43, 55, -11, 100, 34], True)
-    descending_list = selection_sort([1, 43, 55, -11, 100, 34], False)
+def sort_songs(songs: list[list[str]], col: int, ascending=True) -> list[list[str]]:
+    """Sort a list of spotify songs in place
 
-    print(ascending_list)
-    print(descending_list)
+    Params:
+        songs - list of songs
+        col - column to sort
+        ascending - will sort ascending by default
+
+    Returns: sorted list"""
+    # Get songs from an artist
+    num_songs = len(songs)
+    # Use Selection Sort to sort songs
+    for i in range(num_songs):
+        candidate_val = helper_spotify.string_to_num(songs[i][col])
+        candidate_idx = i
+        # check the rest of the list
+        for j in range(i + 1, num_songs):
+            if ascending:
+                this_songs_val = helper_spotify.string_to_num(songs[j][col])
+                if this_songs_val < candidate_val:
+                    candidate_val = this_songs_val
+                    candidate_idx = j
+            else:
+                this_songs_val = helper_spotify.string_to_num(songs[j][col])
+                if this_songs_val > candidate_val:
+                    candidate_val = this_songs_val
+                    candidate_idx = j
+
+        # swap the current index with the lowest
+        songs[i], songs[candidate_idx] = songs[candidate_idx], songs[i]
+
+    return songs
+
+
+if __name__ == "__main__":
+    # Get all songs from an artist
+    taylors_songs = helper_spotify.songs_by_artist(
+        "data/spotify2024.csv", "Taylor Swift"
+    )
+    taylors_sorted_songs = sort_songs(taylors_songs, 11, ascending=False)
+    for song in taylors_sorted_songs:
+        print(song[0], song[11])
