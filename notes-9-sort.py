@@ -88,10 +88,38 @@ def sort_songs(songs: list[list[str]], col: int, ascending=True) -> list[list[st
 
 
 if __name__ == "__main__":
-    # Get all songs from an artist
-    taylors_songs = helper_spotify.songs_by_artist(
-        "data/spotify2024.csv", "Taylor Swift"
-    )
-    taylors_sorted_songs = sort_songs(taylors_songs, 11, ascending=False)
-    for song in taylors_sorted_songs:
-        print(song[0], song[11])
+    # Task 1
+    # ed_songs = helper_spotify.songs_by_artist("data/spotify2024.csv", "Ed Sheeran")
+    # ed_sorted_songs = sort_songs(ed_songs, 11, ascending=False)
+    # print("Ed Sheeran's Songs")
+    # print("______________________")
+    # print("Name \t \t YT Views")
+    # for song in ed_sorted_songs:
+    #     print(song[0], "\t", song[11])
+
+    # Task 2
+    # ed_songs = helper_spotify.songs_by_artist("data/spotify2024.csv", "Ed Sheeran")
+    # ed_sorted_songs = sort_songs(ed_songs, 11, ascending=True)
+    # print("Ed Sheeran's Songs")
+    # print("______________________")
+    # print("Name \t \t YT Views")
+    # for song in ed_sorted_songs:
+    #     print(song[0], "\t", song[11])
+
+    # Task 3
+    # ed_songs = helper_spotify.songs_by_artist("data/spotify2024.csv", "Ed Sheeran")
+    # ed_sorted_songs = sort_songs(ed_songs, 15, ascending=False)
+    # print("Ed Sheeran's Songs")
+    # print("______________________")
+    # print("Name \t \t Tiktok Views")
+    # for song in ed_sorted_songs:
+    #     print(song[0], "\t", song[15])
+
+    # Task 4 and 5
+    the_songs = helper_spotify.songs_with_the("data/spotify2024.csv", "The " or "the ")
+    the_sorted_songs = sort_songs(the_songs, 15, ascending=False)
+    print("Songs with The")
+    print("______________________")
+    print("Name \t \t Tiktok Views")
+    for song in the_sorted_songs:
+        print(song[0], "\t", song[15])

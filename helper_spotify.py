@@ -26,6 +26,28 @@ def songs_by_artist(file_path: str, artist: str) -> list[list[str]]:
     return songs
 
 
+def songs_with_the(file_path: str, search_term: str) -> list[list[str]]:
+    """Searches through given file and returns a list of songs from given artist."""
+    song_col = 0
+    songs = []
+
+    # open the file
+    with open(file_path) as f:
+        # get rid of the header row
+        _ = f.readline()
+
+        # create a reader object
+        r = csv.reader(f)
+
+        # go through reader line by line
+        for info in r:
+            # if the current artist has "the" in the track name, add it to the list
+            if search_term in info[song_col]:
+                songs.append(info)
+
+    return songs
+
+
 def string_to_num(s: str) -> int:
     """Converts a string number with commas in it to an integer. (e.g. "1,223,222" -> 1223222)"""
     return int(s.replace(",", "")) if s else 0
