@@ -9,6 +9,7 @@ class Pokemon:
     def __init__(self):
         # Initialize the properties of Pokemon
         self.name = "Pikachu"
+        self.species = "Pikachu"
         self.type = "Electric"
         self.shiny = False
         self.age = 0
@@ -20,6 +21,35 @@ class Pokemon:
         else:
             self.shiny = True
             print(f"{self.name} is shiny!")
+
+    def talk(self):
+        """Hear what the pokemon has to say
+        The pokemon says its species name."""
+        print(f'{self.name} says, "{self.species}".')
+
+    def stats(self):
+        print(f"----{self.species}------")
+        print(f"    Name: {self.name}")
+        print(f"    Species: {self.species}")
+        print(f"    Type: {self.type}")
+        print(f"    Shiny: {self.shiny}")
+        print(f"    Age: {self.age}")
+        print(f"    Level: {self.level}")
+        print("--------------------")
+
+    def dance(self):
+        print(f"{self.name} moves to the left!")
+        print(f"{self.name} moves to the right!")
+        print(f"{self.name} spins around!")
+        print(f"{self.name} jumps!")
+        print(f"{self.name} dances!")
+
+
+class squirtle(Pokemon):
+    def water_gun(self):
+        """Shoots a water gun"""
+        print(f"{self.name} shoots a water gun!")
+        # TODO: check to see if its effective
 
 
 if __name__ == "__main__":
@@ -38,3 +68,14 @@ if __name__ == "__main__":
         print("The two pokemons are the same.")
     else:
         print("The two pokemons are different.")
+    pokemon1.talk()
+    pokemon2.talk()
+    pokemon1.stats()
+    pokemon2.stats()
+    pokemon1.dance()
+    pokemon2.dance()
+
+    squirtle1 = squirtle()
+    squirtle1.name = "Squirtle"
+    squirtle1.talk()
+    squirtle1.water_gun()
