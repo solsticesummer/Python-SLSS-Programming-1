@@ -22,6 +22,9 @@ class Pokemon:
 
         print("A Pokemon is born!")
 
+    def super_effective(self):
+        print(f"{self.name} is super effective!")
+
     def talk(self):
         """Hear what the pokemon has to say
         The pokemon says its species name."""
@@ -122,9 +125,11 @@ if __name__ == "__main__":
     squirtle1.stats()
     squirtle1.talk()
     squirtle1.water_gun()
+    squirtle1.find_something()
 
     # Charizard
     charizard1 = charizard()
     charizard1.stats()
     charizard1.talk()
     charizard1.flamethrower()
+    charizard1.super_effective()
