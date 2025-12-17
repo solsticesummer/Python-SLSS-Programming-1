@@ -11,6 +11,8 @@ class Pokemon:
         self.name = ""
         self.species = ""
         self.type = ""
+        self.age = 0
+        self.level = 1
         # One out of 4096 is shiny
         if random.randint(0, 4095):
             self.shiny = False
@@ -39,6 +41,26 @@ class Pokemon:
         print(f"{self.name} spins around!")
         print(f"{self.name} jumps!")
         print(f"{self.name} dances!")
+
+    def find_something(self, how_many_things=1) -> list[str]:
+        """Send pokemon to find something
+
+        Returns:
+            a str representing what it found"""
+        things = [
+            "pinap berry",
+            "razz berry",
+            "nanab berry",
+            "golden razz berry",
+            "leftovers",
+            "moon stone",
+        ]
+        found_things = []
+
+        for _ in range(how_many_things):
+            found_things.append(random.choice(things))
+
+        return found_things
 
 
 class squirtle(Pokemon):
@@ -83,6 +105,11 @@ if __name__ == "__main__":
         print("The two pokemons are the same.")
     else:
         print("The two pokemons are different.")
+    # Check if both objects are pokemon
+    if type(pokemon1) is Pokemon:
+        print(f"{pokemon1.name} is a Pokemon.")
+    if type(pokemon2) is Pokemon:
+        print(f"{pokemon2.name} is a Pokemon.")
 
     # Squirtle
     squirtle1 = squirtle()
