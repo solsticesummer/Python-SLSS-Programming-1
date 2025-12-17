@@ -9,7 +9,7 @@ class Pokemon:
     def __init__(self):
         # Initialize the properties of Pokemon
         self.name = ""
-        self.species = ""
+        self.word = ""
         self.type = ""
         self.age = 0
         self.level = 1
@@ -25,14 +25,16 @@ class Pokemon:
     def talk(self):
         """Hear what the pokemon has to say
         The pokemon says its species name."""
-        print(f'{self.name} says, "{self.species}".')
+        print(f'{self.name} says, "{self.word}!".')
 
     def stats(self):
-        print(f"----{self.species}------")
+        print(f"----{self.name}------")
         print(f"    Name: {self.name}")
-        print(f"    Species: {self.species}")
+        print(f"    Species: {self.word}")
         print(f"    Type: {self.type}")
         print(f"    Shiny: {self.shiny}")
+        print(f"    Age: {self.age}")
+        print(f"    Level: {self.level}")
         print("--------------------")
 
     def dance(self):
@@ -67,8 +69,10 @@ class squirtle(Pokemon):
     def __init__(self):
         super().__init__()
         self.name = "Squirtle"
-        self.species = "Squirt"
+        self.word = "Squirtle"
         self.type = "Water"
+        self.age = 10
+        self.level = 1
 
     def water_gun(self):
         """Shoots a water gun"""
@@ -80,11 +84,13 @@ class charizard(Pokemon):
     def __init__(self):
         super().__init__()
         self.name = "Charizard"
-        self.species = "Char"
+        self.word = "Char"
         self.type = "Fire"
+        self.age = 1000
+        self.level = 100
 
-    def fireball(self):
-        print(f"{self.name} shoots a fireball!")
+    def flamethrower(self):
+        print(f"{self.name} shoots a flamethrower!")
 
 
 if __name__ == "__main__":
@@ -119,7 +125,6 @@ if __name__ == "__main__":
 
     # Charizard
     charizard1 = charizard()
-    charizard1.name = "Charizard"
     charizard1.stats()
     charizard1.talk()
-    charizard1.fireball()
+    charizard1.flamethrower()
