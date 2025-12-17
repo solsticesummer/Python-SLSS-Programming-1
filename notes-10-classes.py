@@ -13,6 +13,7 @@ class Pokemon:
         self.type = ""
         self.age = 0
         self.level = 1
+        self.health = 100
         # One out of 4096 is shiny
         if random.randint(0, 4095):
             self.shiny = False
@@ -38,6 +39,7 @@ class Pokemon:
         print(f"    Shiny: {self.shiny}")
         print(f"    Age: {self.age}")
         print(f"    Level: {self.level}")
+        print(f"    Health: {self.health}")
         print("--------------------")
 
     def dance(self):
@@ -95,6 +97,9 @@ class charizard(Pokemon):
     def flamethrower(self):
         print(f"{self.name} shoots a flamethrower!")
 
+    def fire_blast(self):
+        print(f"{self.name} uses fire blast!")
+
 
 if __name__ == "__main__":
     # Create a pokemon object
@@ -131,5 +136,6 @@ if __name__ == "__main__":
     charizard1 = charizard()
     charizard1.stats()
     charizard1.talk()
+    charizard1.fire_blast()
     charizard1.flamethrower()
     charizard1.super_effective()
