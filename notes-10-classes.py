@@ -84,6 +84,11 @@ class squirtle(Pokemon):
         print(f"{self.name} shoots a water gun!")
         # TODO: check to see if its effective
 
+    def bubble(self):
+        """Creates a bubble"""
+        print(f"{self.name} shoots a bubble!")
+        # TODO: check to see if its effective
+
 
 class charizard(Pokemon):
     def __init__(self):
@@ -130,7 +135,9 @@ if __name__ == "__main__":
     squirtle1.stats()
     squirtle1.talk()
     squirtle1.water_gun()
-    squirtle1.find_something()
+    squirtle1.super_effective()
+    squirtle1.bubble()
+    squirtle1.super_effective()
 
     # Charizard
     charizard1 = charizard()
@@ -138,4 +145,3 @@ if __name__ == "__main__":
     charizard1.talk()
     charizard1.fire_blast()
     charizard1.flamethrower()
-    charizard1.super_effective()
