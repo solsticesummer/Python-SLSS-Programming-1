@@ -28,7 +28,7 @@ class Mario(pygame.sprite.Sprite):
         """A Mario character"""
         super().__init__()
 
-        self.image = pygame.image.load("mario.png")
+        self.image = pygame.image.load("Assets/mario.png")
         self.rect = self.image.get_rect()
 
     def update(self):
