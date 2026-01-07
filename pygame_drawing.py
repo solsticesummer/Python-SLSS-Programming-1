@@ -16,6 +16,7 @@ def game():
     GREEN = (0, 255, 0)
     BLUE = (0, 0, 255)
     GREY = (128, 128, 128)
+    ORANGE = (255, 165, 0)
 
     # CONSTANTS
     WIDTH = 800
@@ -24,7 +25,7 @@ def game():
 
     # Creating the Screen
     screen = pygame.display.set_mode(SIZE)
-    pygame.display.set_caption("Your Title Here")
+    pygame.display.set_caption("Mountains with moon")
 
     # Variables
     done = False
@@ -44,10 +45,34 @@ def game():
         screen.fill(BLUE)
         # Draw a red rectangle in the middle of the screen
         # pygame.draw.rect(screen, RED, (WIDTH / 2, HEIGHT / 2, 100, 40))
-        # Mountain
+
+        # Mountains
         pygame.draw.polygon(
-            screen, GREY, [(0, HEIGHT), (WIDTH / 2, HEIGHT / 2), (WIDTH, HEIGHT)]
+            screen,
+            GREY,
+            [(200, HEIGHT), (WIDTH / 2, HEIGHT / 2 - 100), (WIDTH - 200, HEIGHT)],
         )
+        pygame.draw.polygon(
+            screen,
+            GREY,
+            [
+                (0, HEIGHT),
+                (200, HEIGHT / 2),
+                (WIDTH / 2, HEIGHT),
+            ],
+        )
+        pygame.draw.polygon(
+            screen,
+            GREY,
+            [
+                (WIDTH, HEIGHT),
+                (WIDTH - 200, HEIGHT / 2),
+                (WIDTH / 2, HEIGHT),
+            ],
+        )
+
+        # Moon
+        pygame.draw.circle(screen, WHITE, (WIDTH / 2, HEIGHT / 6), 50)
 
         # Update screen
         pygame.display.flip()
