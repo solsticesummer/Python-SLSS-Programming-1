@@ -41,9 +41,13 @@ def game():
         # ------ GAME LOGIC
 
         # ------ DRAWING TO SCREEN
-        screen.fill(WHITE)
+        screen.fill(BLUE)
         # Draw a red rectangle in the middle of the screen
-        pygame.draw.rect(screen, RED, (WIDTH / 2, HEIGHT / 2, 100, 40))
+        # pygame.draw.rect(screen, RED, (WIDTH / 2, HEIGHT / 2, 100, 40))
+        # Mountain
+        pygame.draw.polygon(
+            screen, GREY, [(0, HEIGHT), (WIDTH / 2, HEIGHT / 2), (WIDTH, HEIGHT)]
+        )
 
         # Update screen
         pygame.display.flip()
