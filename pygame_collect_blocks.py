@@ -28,13 +28,39 @@ class Mario(pygame.sprite.Sprite):
         """A Mario character"""
         super().__init__()
 
-        self.image = pygame.image.load("Assets/mario.png")
+        self.image_right = pygame.image.load("Assets/mario.png")
+        self.image_right = pygame.transform.scale_by(self.image_right, 0.5)
+        self.image_left = pygame.transform.flip(self.image_right, True, False)
+
+        self.image = self.image_right
         self.rect = self.image.get_rect()
+
+        self.previous_x = 0
+        self.health = 100
+
+    def calc_damage(self, amt: int) -> int:
+        """Decease player health by amt
+        Returns:
+            Remaining health"""
+        self.health -= amt
+        return self.health
 
     def update(self):
         """Update Mario's location based on mouse pos"""
-        mouse_pos = pygame.mouse.get_pos()
-        self.rect.center = mouse_pos
+
+        self.rect.center = pygame.mouse.get_pos()
+
+        # If Mario's previous x is less than current x
+        #   Then Mario is facing Right
+        # If Mario's previous x is greater than current x
+        #   Then Mario is facing left
+        if self.previous_x < self.rect.x:
+            self.image = self.image_right
+        elif self.previous_x > self.rect.x:
+            self.image = self.image_left
+
+        self.previous_x = self.rect.x
+
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
@@ -50,7 +76,6 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x += self.vel_x
         # movement in the y-axis
         self.rect.y += self.vel_y
-
 
 
 def game():
@@ -89,7 +114,7 @@ def game():
         enemy = Enemy()
         enemy.vel_x = random.randint(-5, 5)
         enemy.vel_y = random.randint(-5, 5)
-        enemy.rect.center = (WIDTH/2, HEIGHT/2)
+        enemy.rect.center = (WIDTH / 2, HEIGHT / 2)
         all_sprites_group.add(enemy)
         enemy_sprites_group.add(enemy)
 
@@ -133,6 +158,14 @@ def game():
             print("Mario collected a block!")
             score += 1
             print(score)
+
+        # TODO: Collision between Player and Enemies
+        enemies_collided = pygame.sprite.spritecollide(
+            player, enemy_sprites_group, False
+        )
+        for enemy in enemies_collided:
+            # Decrease mario's life
+            print(player.calc_damage(10))
 
         # ------ DRAWING TO SCREEN
         screen.fill(WHITE)
