@@ -10,11 +10,12 @@ import pygame
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-
+        self.health = 1000
         self.image = pygame.image.load("assets/mario copy.png")
+        self.image = pygame.transform.scale_by(self.image, 0.5)
         self.rect = self.image.get_rect()
-        self.rect.centerx = 100
-        self.rect.centery = 100
+        self.rect.centerx = 400
+        self.rect.centery = 300
 
     def calc_damage(self, amt: int) -> int:
         """Decease player health by amt
@@ -22,6 +23,28 @@ class Player(pygame.sprite.Sprite):
             Remaining health"""
         self.health -= amt
         return self.health
+
+    def move_up(self):
+        self.vel.y -= 10
+
+    def move_down(self):
+        self.vel.y += 10
+
+    def move_left(self):
+        self.vel.x -= 10
+
+    def move_right(self):
+        self.vel.x += 10
+
+    def stop(self):
+        self.vel.x = 0
+        self.vel.y = 0
+
+    def update(self):
+        # movement in the x-axis
+        self.rect.x += self.vel_x
+        # movement in the y-axis
+        self.rect.y += self.vel_y
 
 
 class Lazer(pygame.sprite.Sprite):
@@ -31,25 +54,8 @@ class Lazer(pygame.sprite.Sprite):
         self.image = pygame.image.load("assets/lazer.png")
         self.rect = self.image.get_rect()
 
-        self.rect.centerx = 300
-        self.rect.centery = 300
-
-    def update(self):
-        # movement in the x-axis
-        self.rect.x += self.vel_x
-        # movement in the y-axis
-        self.rect.y += self.vel_y
-
-
-class Light(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-
-        self.image = pygame.image.load("assets/light.png")
-        self.rect = self.image.get_rect()
-
-        self.rect.centerx = 300
-        self.rect.centery = 300
+        self.rect.centerx = random.randint(0, 800)
+        self.rect.centery = random.randint(0, 600)
 
     def update(self):
         # movement in the x-axis
@@ -83,8 +89,10 @@ def game():
     # Variables
     done = False
     clock = pygame.time.Clock()
+    level = 0
     score = 0
-    num_enemies = 10
+    num_enemies = 1
+    main_font = pygame.font.SysFont("Arial", 20)
 
     # Sprites groups
     player_group = pygame.sprite.Group()
@@ -99,6 +107,8 @@ def game():
         enemy_group.add(enemy)
 
     mario = Player()
+    mario.vel_x = 0
+    mario.vel_y = 0
     all_group.add(mario)
     player_group.add(mario)
 
@@ -109,8 +119,20 @@ def game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-
+            # TODO: If the user presses W, then move mario up
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_w:
+                    mario.move_up()
+                if event.key == pygame.K_a:
+                    mario.move_left()
+                if event.key == pygame.K_s:
+                    mario.move_down()
+                if event.key == pygame.K_d:
+                    mario.move_right()
+            if event.type == pygame.KEYUP:
+                mario.stop()
         # ------ GAME LOGIC
+        all_group.update()
         enemy_collided = pygame.sprite.spritecollide(mario, enemy_group, False)
         for enemy in enemy_collided:
             print(f"Health: {mario.calc_damage(10)}")
@@ -120,10 +142,21 @@ def game():
                 enemy.vel_x *= -1
             if enemy.rect.top < 0 or enemy.rect.bottom > HEIGHT:
                 enemy.vel_y *= -1
+        if mario.rect.left < 0 or mario.rect.right > WIDTH:
+            mario.vel_x *= -1
+        if mario.rect.top < 0 or mario.rect.bottom > HEIGHT:
+            mario.vel_y *= -1
+        if mario.health <= 0:
+            print("Game Over")
+            done = True
 
         # ------ DRAWING TO SCREEN
         screen.fill(BLACK)
         all_group.draw(screen)
+
+        score_text = main_font.render(f"Score: {score}", True, WHITE)
+        screen.blit(score_text, (10, 10))
+
         # Update screen
         pygame.display.flip()
 
