@@ -21,6 +21,8 @@ class Player(pygame.sprite.Sprite):
         self.vel_x = 0
         self.vel_y = 0
 
+        self.previous_x = 0
+
     def calc_damage(self, amt: int) -> int:
         """Decease player health by amt
         Returns:
@@ -35,10 +37,10 @@ class Player(pygame.sprite.Sprite):
         self.vel_y += 10
 
     def move_left(self):
-        self.vel_x -= 5
+        self.vel_x -= 10
 
     def move_right(self):
-        self.vel_x += 5
+        self.vel_x += 10
 
     def stop(self):
         self.vel_x = 0
@@ -49,6 +51,13 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.vel_x
         # movement in the y-axis
         self.rect.y += self.vel_y
+
+        if self.previous_x < self.rect.x:
+            self.image = self.image_right
+        elif self.previous_x > self.rect.x:
+            self.image = self.image_left
+
+        self.previous_x = self.rect.x
 
 
 class Lazer(pygame.sprite.Sprite):
@@ -106,14 +115,16 @@ def game():
 
     for _ in range(num_enemies):
         enemy = Lazer()
-        enemy.vel_x = random.randint(-5, 5)
-        enemy.vel_y = random.randint(-5, 5)
+        enemy.vel_x = random.randint(-2, 2)
+        enemy.vel_y = random.randint(-2, 2)
+        if enemy.vel_x == 0:
+            enemy.vel_x = 1
+        if enemy.vel_y == 0:
+            enemy.vel_y = 1
         all_group.add(enemy)
         enemy_group.add(enemy)
 
     mario = Player()
-    mario.vel_x = 0
-    mario.vel_y = 0
     all_group.add(mario)
     player_group.add(mario)
 
@@ -142,12 +153,12 @@ def game():
             level += 1
             # Increase the speed of enemies and mario
             for enemy in enemy_group:
-                enemy.vel_x *= 1.1
-                enemy.vel_y *= 1.1
+                enemy.vel_x *= 1.5
+                enemy.vel_y *= 1.5
             # Increase the size of mario
             mario.image = pygame.transform.scale_by(mario.image, 1.1)
             mario.rect = mario.image.get_rect()
-            mario.rect.center = mario.rect.center
+
         all_group.update()
         enemy_collided = pygame.sprite.spritecollide(mario, enemy_group, False)
         for enemy in enemy_collided:
@@ -158,6 +169,7 @@ def game():
                 enemy.vel_x *= -1
             if enemy.rect.top < 0 or enemy.rect.bottom > HEIGHT:
                 enemy.vel_y *= -1
+
         if mario.rect.left < 0 or mario.rect.right > WIDTH:
             mario.vel_x *= -1
         if mario.rect.top < 0 or mario.rect.bottom > HEIGHT:
