@@ -11,11 +11,15 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.health = 1000
-        self.image = pygame.image.load("assets/mario copy.png")
-        self.image = pygame.transform.scale_by(self.image, 0.5)
+        self.image_right = pygame.image.load("assets/mario copy.png")
+        self.image_right = pygame.transform.scale_by(self.image_right, 0.5)
+        self.image_left = pygame.transform.flip(self.image_right, True, False)
+        self.image = self.image_right
         self.rect = self.image.get_rect()
         self.rect.centerx = 400
         self.rect.centery = 300
+        self.vel_x = 0
+        self.vel_y = 0
 
     def calc_damage(self, amt: int) -> int:
         """Decease player health by amt
@@ -25,20 +29,20 @@ class Player(pygame.sprite.Sprite):
         return self.health
 
     def move_up(self):
-        self.vel.y -= 10
+        self.vel_y -= 10
 
     def move_down(self):
-        self.vel.y += 10
+        self.vel_y += 10
 
     def move_left(self):
-        self.vel.x -= 10
+        self.vel_x -= 5
 
     def move_right(self):
-        self.vel.x += 10
+        self.vel_x += 5
 
     def stop(self):
-        self.vel.x = 0
-        self.vel.y = 0
+        self.vel_x = 0
+        self.vel_y = 0
 
     def update(self):
         # movement in the x-axis
@@ -52,6 +56,7 @@ class Lazer(pygame.sprite.Sprite):
         super().__init__()
 
         self.image = pygame.image.load("assets/lazer.png")
+        self.image = pygame.transform.scale_by(self.image, 0.1)
         self.rect = self.image.get_rect()
 
         self.rect.centerx = random.randint(0, 800)
@@ -89,10 +94,10 @@ def game():
     # Variables
     done = False
     clock = pygame.time.Clock()
-    level = 0
+    level = 1
     score = 0
-    num_enemies = 1
-    main_font = pygame.font.SysFont("Arial", 20)
+    num_enemies = 5
+    main_font = pygame.font.SysFont("Arial", 50)
 
     # Sprites groups
     player_group = pygame.sprite.Group()
@@ -132,6 +137,17 @@ def game():
             if event.type == pygame.KEYUP:
                 mario.stop()
         # ------ GAME LOGIC
+        score += 1
+        if score % 1000 == 0:
+            level += 1
+            # Increase the speed of enemies and mario
+            for enemy in enemy_group:
+                enemy.vel_x *= 1.1
+                enemy.vel_y *= 1.1
+            # Increase the size of mario
+            mario.image = pygame.transform.scale_by(mario.image, 1.1)
+            mario.rect = mario.image.get_rect()
+            mario.rect.center = mario.rect.center
         all_group.update()
         enemy_collided = pygame.sprite.spritecollide(mario, enemy_group, False)
         for enemy in enemy_collided:
@@ -155,7 +171,14 @@ def game():
         all_group.draw(screen)
 
         score_text = main_font.render(f"Score: {score}", True, WHITE)
-        screen.blit(score_text, (10, 10))
+        screen.blit(score_text, (10, 2))
+
+        level_text = main_font.render(f"Level: {level}", True, WHITE)
+        screen.blit(level_text, (400, 2))
+
+        # Draw health bar
+        health_bar_width = mario.health / WIDTH
+        pygame.draw.rect(screen, GREEN, (10, 50, health_bar_width * 400, 20))
 
         # Update screen
         pygame.display.flip()
