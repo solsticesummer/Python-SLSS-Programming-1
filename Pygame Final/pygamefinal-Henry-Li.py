@@ -113,6 +113,10 @@ def game():
     enemy_group = pygame.sprite.Group()
     all_group = pygame.sprite.Group()
 
+    mario = Player()
+    all_group.add(mario)
+    player_group.add(mario)
+
     for _ in range(num_enemies):
         enemy = Lazer()
         enemy.vel_x = random.randint(-2, 2)
@@ -123,10 +127,6 @@ def game():
             enemy.vel_y = 1
         all_group.add(enemy)
         enemy_group.add(enemy)
-
-    mario = Player()
-    all_group.add(mario)
-    player_group.add(mario)
 
     # ------------ MAIN GAME LOOP
     while not done:
@@ -153,11 +153,8 @@ def game():
             level += 1
             # Increase the speed of enemies and mario
             for enemy in enemy_group:
-                enemy.vel_x *= 1.5
-                enemy.vel_y *= 1.5
-            # Increase the size of mario
-            mario.image = pygame.transform.scale_by(mario.image, 1.1)
-            mario.rect = mario.image.get_rect()
+                enemy.vel_x *= 2
+                enemy.vel_y *= 2
 
         all_group.update()
         enemy_collided = pygame.sprite.spritecollide(mario, enemy_group, False)
