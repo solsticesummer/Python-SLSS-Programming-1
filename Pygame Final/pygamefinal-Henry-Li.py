@@ -173,6 +173,7 @@ def game():
             mario.vel_y *= -1
         if mario.health <= 0:
             print("Game Over")
+            print("Final Score:", score)
             done = True
 
         # ------ DRAWING TO SCREEN
